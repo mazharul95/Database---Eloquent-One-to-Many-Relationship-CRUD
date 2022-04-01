@@ -9,6 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
+    //__ mass assignment __//
     protected $fillable = [
         'title','body',
     ];
