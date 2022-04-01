@@ -35,7 +35,14 @@ Route::get('/read', function (){
     }
 });
 
+//__ updating data __//
 Route::get('/update', function (){
    $user = User::Find(1);
    $user->posts()->where('id','=', 2)->update(['title'=>' I love laravel & php ','body'=>'this is awesome, thank you mi piyash 2']);
+});
+
+//__deleting data __//
+Route::get('/delete', function (){
+   $user = User::find(1);
+   $user->posts()->whereId(1)->delete();
 });
