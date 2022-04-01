@@ -18,9 +18,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//__ inserting data __//
 Route::get('/create', function (){
     $user = User::findOrFail(1);
-    $post = new Post(['title'=>'My first post title','body'=>'I love laravel, with mi']);
+    $post = new Post(['title'=>'My first post title with mazharul islam','body'=>'I love laravel, with mi piyash']);
     $user->posts()->save($post);
 
+});
+
+//__ reading data __//
+Route::get('/read', function (){
+    $user = User::findOrFail(1);
+    //return response()->json($user->posts);
+    foreach ($user->posts as $post){
+        echo $post->title . "<br> ";
+    }
+});
+
+Route::get('/update', function (){
+   $user = User::Find(1);
+   $user->posts()->where('id','=', 2)->update(['title'=>' I love laravel & php ','body'=>'this is awesome, thank you mi piyash 2']);
 });
